@@ -8,10 +8,10 @@ An application that displays information on North American Indigenous Peoples an
 * Tribe information page
 
 ### Planning
-* Project Board: [Link]()
-* Visuals and Models: [Link]()
+* Project Board: [Link](https://github.com/bsmejkal/kindred-culture/projects/1/)
+* Visuals and Models: [Link](https://drive.google.com/drive/folders/1-Z4k8-NXSgaJ9MpJns2WhGSqWicmiWuA?usp=sharing)
 
-![Image]()
+![Image](https://drive.google.com/open?id=1u20peFYpti3YBwOVVgOOh8rVhzm78Vb9)
 
 1. Sprint 1:
 2. Sprint 2:
