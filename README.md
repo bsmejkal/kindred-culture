@@ -11,8 +11,8 @@ An application that displays information on North American Indigenous Peoples an
 * Project Board: [Link](https://github.com/bsmejkal/kindred-culture/projects/1/)
 * Visuals and Models: [Link](https://drive.google.com/drive/folders/1-Z4k8-NXSgaJ9MpJns2WhGSqWicmiWuA?usp=sharing)
 
-![Image](mvp_data_model.png)
+![](mvp_data_model.png)
 
-1. Sprint 1:
-2. Sprint 2:
-3. Sprint 3:
+1. Sprint 1: Planning and building data set
+2. Sprint 2: MVP
+3. Sprint 3: Design
