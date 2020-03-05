@@ -29,7 +29,7 @@ def about():
 	return render_template("")
 
 
-if __name__ == "__main__"
+if __name__ == "__main__":
 
 	app.debug = True
 	app.jinja_env.auto_reload = app.debug
@@ -39,4 +39,3 @@ if __name__ == "__main__"
 	DebugToolbarExtension(app)
 
 	app.run(port=5000, host='0.0.0.0')
-	
