@@ -22,11 +22,11 @@ def index():
 	return render_template("")
 
 
-@app.route('/about')
-def about():
-	"""About project"""
+# @app.route('/about')
+# def about():
+# 	"""About project"""
 
-	return render_template("")
+# 	return render_template("")
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ Class Tribe(db.Model):
 
 	__tablename__ = "tribe"
 
-	tribe_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	tribe_id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
 	name = db.Column(db.String(), nullable=False, unique=True)
 	common_name = db.Column(db.String(), nullable=True)
 	earliest_location = db.relationship("Location", backref=) #Finish backref link
@@ -27,9 +27,8 @@ Class Location(db.Model):
 
 	__tablename__ = "location"
 
-	location_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-	latitude = db.Column(db.Integer, nullable=False)
-	longitude = db.Column(db.Integer, nullable=False)
+	location_id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
+	coordinates = db.Column(db.String(), nullable=False)
 	region = db.Column(db.String(), nullable=True)
 
 	def __repr__(self):
