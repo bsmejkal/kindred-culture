@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-Class Tribe(db.Model):
+class Tribe(db.Model):
 	"""Indigeneous peoples in North America"""
 
 	__tablename__ = "tribe"
@@ -12,23 +12,22 @@ Class Tribe(db.Model):
 	tribe_id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
 	name = db.Column(db.String(), nullable=False, unique=True)
 	common_name = db.Column(db.String(), nullable=True)
-	earliest_location = db.relationship("Location", backref=) #Finish backref link
-	current_location = db.relationship("Location", backref=) #Finish backref link
 	language = db.Column(db.String(), nullable=True)
 	language_family = db.Column(db.String(), nullable=True)
+	location = db.relationship("Location", backref="tribe")
 
 	def __repr__(self):
 
 		return f"<Tribe id = {tribe_id}, name = {name}>"
 
 
-Class Location(db.Model):
+class Location(db.Model):
 	"""Location in latitude and longitude"""
 
 	__tablename__ = "location"
 
 	location_id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
-	coordinates = db.Column(db.String(), nullable=False)
+	coordinates = db.Column(db.Integer(), nullable=False)
 	region = db.Column(db.String(), nullable=True)
 
 	def __repr__(self):
