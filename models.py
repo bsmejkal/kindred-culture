@@ -4,27 +4,26 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-class Tribe(db.Model):
+class Tribes(db.Model):
 	"""Indigeneous peoples in North America"""
 
-	__tablename__ = "tribe"
+	__tablename__ = "tribes"
 
 	tribe_id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
 	name = db.Column(db.String(), nullable=False, unique=True)
-	common_name = db.Column(db.String(), nullable=True)
 	language = db.Column(db.String(), nullable=True)
 	language_family = db.Column(db.String(), nullable=True)
-	location = db.relationship("Location", backref="tribe")
+	location = db.relationship("Locations", backref="tribes")
 
 	def __repr__(self):
 
 		return f"<Tribe id = {tribe_id}, name = {name}>"
 
 
-class Location(db.Model):
+class Locations(db.Model):
 	"""Location in latitude and longitude"""
 
-	__tablename__ = "location"
+	__tablename__ = "locations"
 
 	location_id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
 	coordinates = db.Column(db.Integer(), nullable=False)
