@@ -30,6 +30,7 @@ def load_tribes():
 
 	for key in tribe_dict['features']:
 		name = tribe_dict['features'][i]['properties']['Name']
+		coordinates = tribe_dict['features'][i]['geometry']['coordinates']
 		i += 1
 
 		tribe = Tribes(name=name)
@@ -55,7 +56,7 @@ if __name__ == "__main__":
 
     # In case tables haven't been created, create them
     db.create_all()
-    
+
     # Import different types of data
     load_tribes()
     set_val_user_id()
