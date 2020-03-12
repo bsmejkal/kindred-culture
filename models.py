@@ -10,7 +10,7 @@ class Tribes(db.Model):
 	__tablename__ = "tribes"
 
 	tribe_id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
-	name = db.Column(db.String(), nullable=False, unique=True)
+	name = db.Column(db.String(), nullable=True, unique=True)
 	language = db.Column(db.String(), nullable=True)
 	language_family = db.Column(db.String(), nullable=True)
 	location = db.relationship("Locations", backref="tribes")

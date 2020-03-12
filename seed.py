@@ -47,8 +47,8 @@ def set_val_tribe_id():
 	max_id = int(result[0])
 
 	query = "SELECT setval('tribes_tribe_id_seq', :new_id)"
-    db.session.execute(query, {'new_id': max_id + 1})
-    db.session.commit()
+	db.session.execute(query, {'new_id': max_id + 1})
+	db.session.commit()
 
 
 if __name__ == "__main__":
