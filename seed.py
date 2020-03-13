@@ -30,7 +30,7 @@ def load_tribes():
 
 	for key in tribe_dict['features']:
 		name = tribe_dict['features'][i]['properties']['Name']
-		coordinates = tribe_dict['features'][i]['geometry']['coordinates']
+		# coordinates = tribe_dict['features'][i]['geometry']['coordinates']
 		i += 1
 
 		tribe = Tribes(name=name)
