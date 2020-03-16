@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
-
-
 {% block content %}
 	<h1>Map</h1>
 
-	<iframe
-	  src="https://api.mapbox.com/styles/v1/bsmejkal/ck7oy74e92uat1imky060xyh1.html?fresh=true&title=false&access_token=pk.eyJ1IjoiYnNtZWprYWwiLCJhIjoiY2s3ZG0zdWZ6MGVpbjNlcG94OTUyZXdzZSJ9.beCqwACJOxjO_Ax6OZt1AA"/>
+	<div class="container-fluid">
+		<iframe class="embed-responsive-item" style="height:500px; width:100%;" 
+		  src="https://api.mapbox.com/styles/v1/bsmejkal/ck7oy74e92uat1imky060xyh1.html?fresh=true&title=false&access_token=pk.eyJ1IjoiYnNtZWprYWwiLCJhIjoiY2s3ZG0zdWZ6MGVpbjNlcG94OTUyZXdzZSJ9.beCqwACJOxjO_Ax6OZt1AA"/>
+		</iframe>
+	</div>
 
 {% endblock %}
