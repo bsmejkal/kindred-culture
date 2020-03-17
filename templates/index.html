@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<h1>Map</h1>
+	<h3>Map</h3>
 
-	<div class="container-fluid">
-		<iframe class="embed-responsive-item" style="height:500px; width:100%;" 
-		  src="https://api.mapbox.com/styles/v1/bsmejkal/ck7oy74e92uat1imky060xyh1.html?fresh=true&title=false&access_token=pk.eyJ1IjoiYnNtZWprYWwiLCJhIjoiY2s3ZG0zdWZ6MGVpbjNlcG94OTUyZXdzZSJ9.beCqwACJOxjO_Ax6OZt1AA"/>
-		</iframe>
-	</div>
+	<div id='map' style='width: 1000px; height: 500px;'></div>
+	<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiYnNtZWprYWwiLCJhIjoiY2s3ZG0zdWZ6MGVpbjNlcG94OTUyZXdzZSJ9.beCqwACJOxjO_Ax6OZt1AA';
+	var map = new mapboxgl.Map({
+	    container: 'map',
+	    style: 'mapbox://styles/bsmejkal/ck7oy74e92uat1imky060xyh1'
+	});
+	</script>
+
 
 {% endblock %}

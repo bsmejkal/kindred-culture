@@ -1,4 +1,4 @@
-""""""
+"""Server for web app"""
 
 from routes import app
 from models import connect_to_db

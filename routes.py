@@ -1,4 +1,5 @@
-  
+"""Routes to render html page views"""
+
 from flask import Flask, render_template
 from models import Tribe
 
