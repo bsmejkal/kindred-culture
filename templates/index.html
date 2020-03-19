@@ -7,8 +7,6 @@
 
 {% block content %}
 
-	<h3>Map</h3>
-
 	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
 	<link
 	rel="stylesheet"
@@ -19,7 +17,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
-	<div id='map' style='width: 1000px; height: 500px;'></div>
+	<div id='map' style='width: 1100px; height: 500px;'></div>
 	<script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYnNtZWprYWwiLCJhIjoiY2s3ZG0zdWZ6MGVpbjNlcG94OTUyZXdzZSJ9.beCqwACJOxjO_Ax6OZt1AA';
 	var map = new mapboxgl.Map({
@@ -35,8 +33,19 @@
 	);
 
 	map.addControl(new mapboxgl.FullscreenControl());
-	
+
 	</script>
 
+
+	<form id="select-name">
+		<select>
+			<!-- Create for loop to display all tribe names -->
+			{% for tribe in tribes %}
+				<option>{{ tribe.name }}</option>
+			{% endfor %}
+		</select>
+	</form>
+
+	<!-- 	display details here -->
 
 {% endblock %}

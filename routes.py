@@ -9,8 +9,17 @@ app = Flask(__name__)
 @app.route('/')
 def index():
 	"""Home page"""
+	tribes = Tribe.query.all()
 
-	return render_template('index.html')
+	return render_template('index.html',
+						   tribes=tribes)
+
+
+@app.route('/about')
+def show_about():
+	"""About page"""
+
+	return render_template('about.html')
 
 
 @app.route('/details/<int:tribe_id>')
