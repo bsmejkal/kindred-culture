@@ -15,14 +15,16 @@ def index():
 						   tribes=tribes)
 
 
-# @app.route('/details')
-# def show_details():
-# 	""""""
+@app.route('/details', methods=['POST'])
+def show_details():
+	"""Renders description and details in place on index.html"""
 
-# 	name = request.form.get('tribe_name')
-# 	tribe = Tribe.query.filter_by(Tribe.name=name).first()
+	name = request.form.get('tribe_name')
+	tribe = Tribe.query.filter(Tribe.name==name).first()
 
-# 	return name, tribe.region, tribe.description
+	return jsonify({'name': name, 
+				    'region': tribe.region,
+				    'description': tribe.description})
 
 
 @app.route('/about')
@@ -32,11 +34,11 @@ def show_about():
 	return render_template('about.html')
 
 
-@app.route('/details/<int:tribe_id>')
-def display_details(tribe_id):
-	"""Tribe details page."""
+# @app.route('/details/<int:tribe_id>')
+# def display_details(tribe_id):
+# 	"""Tribe details page."""
 
-	tribe = Tribe.query.get(tribe_id)
+# 	tribe = Tribe.query.get(tribe_id)
 
-	return render_template('details.html',
-						   tribe=tribe)
+# 	return render_template('details.html',
+# 						   tribe=tribe)
