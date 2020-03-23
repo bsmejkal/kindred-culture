@@ -65,6 +65,20 @@ class User(db.Model):
 		return f'<User ID = {self.id}, username = {self.username}>'
 
 
+class Connection(db.Model):
+	"""User connections"""
+
+	__tablename__ = "connection"
+
+	id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	user1 = db.Column(db.Integer, db.ForeignKey('users.id'))
+	user2 = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+	def __repr__(self):
+
+		return f'<Connection user 1 = {self.user1} user 2 = {self.user2}>'
+
+
 def connect_to_db(app):
 
 	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///kindred'
