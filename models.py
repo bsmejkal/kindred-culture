@@ -7,20 +7,26 @@ db = SQLAlchemy()
 app = Flask(__name__)
 app.secret_key = 'SUNDERED'
 
+
+ancestry_table = db.Table('ancestry',
+						  db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+						  db.Column('tribe_id', db.Integer, db.ForeignKey('tribes.id')))
+
+
 class Tribe(db.Model):
 	"""Indigeneous peoples in North America"""
 
 	__tablename__ = 'tribes'
 
-	tribe_id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
-	name = db.Column(db.String(), nullable=True, unique=True)
-	region = db.Column(db.String(), nullable=True)
-	description = db.Column(db.String(), nullable=True)
-	language_id = db.Column(db.Integer(), db.ForeignKey('languages.language_id'))
+	id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	name = db.Column(db.String, nullable=True, unique=True)
+	region = db.Column(db.String, nullable=True)
+	description = db.Column(db.String, nullable=True)
+	language_id = db.Column(db.Integer, db.ForeignKey('languages.language_id'))
 	
 	def __repr__(self):
 
-		return f'<Tribe id = {tribe_id}, name = {name}>'
+		return f'<Tribe ID = {self.tribe_id}, name = {self.name}>'
 
 
 class Language(db.Model):
@@ -28,14 +34,35 @@ class Language(db.Model):
 
 	__tablename__ = 'languages'
 
-	language_id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
-	language_name = db.Column(db.String(), nullable=True, unique=True)
-	language_family = db.Column(db.String(), nullable=True)
+	id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	language_name = db.Column(db.String, nullable=True, unique=True)
+	language_family = db.Column(db.String, nullable=True)
 
 
 	def __repr__(self):
 
-		return f'<Language id = {language_id}, language = {language}>'
+		return f'<Language ID = {self.language_id}, language = {self.language_name}>'
+
+
+class User(db.Model):
+	"""Users"""
+
+	__tablename__ = 'users'
+
+	id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	email = db.Column(db.String, nullable=False, unique=True)
+	first_name = db.Column(db.String(50))
+	last_name = db.Column(db.String(50))
+	username = db.Column(db.String(100), nullable=False, unique=True)
+	password = db.Column(db.String(250), nullable=False)
+	about = db.Column(db.String, nullable=True)
+	city = db.Column(db.String, nullable=True)
+
+	ancestry = db.relationship('Tribe', secondary='ancestry')
+
+	def __repr__(self):
+
+		return f'<User ID = {self.id}, username = {self.username}>'
 
 
 def connect_to_db(app):
@@ -51,5 +78,5 @@ def connect_to_db(app):
 if __name__ == "__main__":
 
 	from server import app
-	connect_to_db(app, 'kindred')
+	connect_to_db(app)
 	print('Connected to database.')

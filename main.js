@@ -11,4 +11,4 @@ function showTribeDetails(evt) {
 
 }
 
-$('#select-details').on('submit', showTribeDetails)
+$('#select-details').on('submit', showTribeDetails);
