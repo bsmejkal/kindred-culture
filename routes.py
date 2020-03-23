@@ -9,10 +9,20 @@ app = Flask(__name__)
 @app.route('/')
 def index():
 	"""Home page"""
-	tribes = Tribe.query.all()
+	tribes = Tribe.query.order_by(Tribe.name.asc()).all()
 
 	return render_template('index.html',
 						   tribes=tribes)
+
+
+# @app.route('/details')
+# def show_details():
+# 	""""""
+
+# 	name = request.form.get('tribe_name')
+# 	tribe = Tribe.query.filter_by(Tribe.name=name).first()
+
+# 	return name, tribe.region, tribe.description
 
 
 @app.route('/about')

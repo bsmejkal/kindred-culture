@@ -37,15 +37,23 @@
 	</script>
 
 
-	<form id="select-name">
-		<select>
-			<!-- Create for loop to display all tribe names -->
-			{% for tribe in tribes %}
-				<option>{{ tribe.name }}</option>
-			{% endfor %}
-		</select>
+	<form id="select-details">
+		<div class="form-group">
+			<label>Details</label>
+			<select id="tribe-name-field" name="tribe_name">
+				<!-- for loop to display all tribe names -->
+				{% for tribe in tribes %}
+					<option>{{ tribe.name }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="form-group">
+			<button type="submit" id="select-details-button">Select</button>
+		</div>
 	</form>
 
 	<!-- 	display details here -->
+	<div id="show-details">
+	</div>
 
 {% endblock %}

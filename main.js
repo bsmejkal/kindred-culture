@@ -1,3 +1,7 @@
 "use strict";
 
-// function showTribeDetails(evt)
+function showTribeDetails(evt) {
+
+}
+
+$('#select-details').on('submit', showTribeDetails)
