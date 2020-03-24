@@ -34,6 +34,20 @@ def show_about():
 	return render_template('about.html')
 
 
+@app.route('/register')
+def register_user():
+	"""User registration page"""
+
+	return render_template('register.html')
+
+
+@app.route('/login')
+def login():
+	"""User login page"""
+
+	return render_template('login.html')
+
+
 # @app.route('/details/<int:tribe_id>')
 # def display_details(tribe_id):
 # 	"""Tribe details page."""

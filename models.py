@@ -10,7 +10,7 @@ app.secret_key = 'SUNDERED'
 
 ancestry_table = db.Table('ancestry',
 						  db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-						  db.Column('tribe_id', db.Integer, db.ForeignKey('tribes.id')))
+						  db.Column('tribe_id', db.Integer, db.ForeignKey('tribes.tribe_id')))
 
 
 class Tribe(db.Model):
@@ -18,7 +18,7 @@ class Tribe(db.Model):
 
 	__tablename__ = 'tribes'
 
-	id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	tribe_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
 	name = db.Column(db.String, nullable=True, unique=True)
 	region = db.Column(db.String, nullable=True)
 	description = db.Column(db.String, nullable=True)
