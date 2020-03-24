@@ -48,6 +48,13 @@ def login():
 	return render_template('login.html')
 
 
+@app.route('/profile')
+def profile():
+	"""User's profile page"""
+
+	return render_template('profile.html')
+
+
 # @app.route('/details/<int:tribe_id>')
 # def display_details(tribe_id):
 # 	"""Tribe details page."""
