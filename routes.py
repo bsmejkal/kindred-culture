@@ -1,7 +1,8 @@
 """Routes to render html page views"""
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 from models import Tribe
+
 
 
 app = Flask(__name__)
@@ -19,10 +20,11 @@ def index():
 def show_details():
 	"""Renders description and details in place on index.html"""
 
-	name = request.form.get('tribe_name')
-	tribe = Tribe.query.filter(Tribe.name==name).first()
+	tribe_name = request.form.get('tribe_name')
+	print(f'\n \n \n {tribe_name}')
+	tribe = Tribe.query.filter(Tribe.name==tribe_name).first()
 
-	return jsonify({'name': name, 
+	return jsonify({'name': tribe.name, 
 				    'region': tribe.region,
 				    'description': tribe.description})
 

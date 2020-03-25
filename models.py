@@ -34,7 +34,7 @@ class Language(db.Model):
 
 	__tablename__ = 'languages'
 
-	id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	language_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
 	language_name = db.Column(db.String, nullable=True, unique=True)
 	language_family = db.Column(db.String, nullable=True)
 
