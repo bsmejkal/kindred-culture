@@ -1,16 +1,21 @@
-"""Routes to render html page views"""
+"""Routes to render html page views, user page views, & user auths."""
 
-from flask import Flask, render_template, request, jsonify
-from models import Tribe
-
+from flask import Flask, render_template, request, jsonify, session, redirect
+from models import Tribe, User
 
 
 app = Flask(__name__)
 
+
+# Guest routes:
+
 @app.route('/')
 def index():
 	"""Home page"""
+
 	tribes = Tribe.query.order_by(Tribe.name.asc()).all()
+	# Displays all tribe names in ascending order
+	# 	in dropdown list.
 
 	return render_template('index.html',
 						   tribes=tribes)
@@ -50,18 +55,62 @@ def login():
 	return render_template('login.html')
 
 
-@app.route('/profile')
-def profile():
-	"""User's profile page"""
+# Auth routes:
 
-	return render_template('profile.html')
+@app.route('/api/auth', methods=['POST'])
+def login_auth():
+	user = User.query.filter_by(username=request.form.get('username')).first()
+
+	if user.login(request.form.get('password')):
+		app.logger.info('...Login successful.')
+		session['user_id'] = user.id
+	else:
+		app.logger.info('-  Login failure  -')
+		return render_template('login.html')
+
+	return render_template('profile.html', user=user)
 
 
-# @app.route('/details/<int:tribe_id>')
-# def display_details(tribe_id):
-# 	"""Tribe details page."""
+@app.route('/logout')
+def logout():
+	del session['user_id']
 
-# 	tribe = Tribe.query.get(tribe_id)
+	return redirect('/')
 
-# 	return render_template('details.html',
-# 						   tribe=tribe)
+
+@app.route('/api/register', methods=['POST'])
+def register_auth():
+	"""Handles user registration data"""
+
+	app.logger.info('Registering new user...')
+
+	user_data = dict(request.form)
+
+	if user_data.get('password') == user_data.get('passwordConfirm'):
+		del user_data['passwordConfirm']
+
+		user = User(**user_data)
+		user.create_password(user_data.get('password'))
+		user.save()
+		app.logger.info(f'New user {user.id} created. Logging in...')
+		session['user_id'] = user.id
+
+		return redirect(f'/users/{user_id}')
+
+
+# User routes:
+
+@app.route('/users/<int:user_id>')
+def get_user(user_id):
+	user = User.query.get(user_id)
+	app.logger.ingo(f'Current user = {user}')
+
+	return render_template('profile.html', user=user)
+
+
+# @app.route('/profile')
+# def profile():
+# 	"""Another user's profile page"""
+
+# 	return render_template('profile.html')
+

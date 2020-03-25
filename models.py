@@ -1,6 +1,7 @@
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
@@ -63,6 +64,12 @@ class User(db.Model):
 	def __repr__(self):
 
 		return f'<User ID = {self.id}, username = {self.username}>'
+
+	def create_password(self, password):
+		self.password = generate_password_hash(password)
+
+	def is_valid_password(self, password):
+		check_password_hash(self.password, password)
 
 
 class Connection(db.Model):
