@@ -17,19 +17,25 @@
       </li>
       <!-- create if/else statement for if user not in session to 
            display login & register -->
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('login') }}">Login
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('register_user') }}">Register
-        </a>
-      </li>
+      {% if not session.get('user_id') %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('login') }}">Login
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('register_user') }}">Register
+          </a>
+        </li>
       <!-- display profile link if user in session -->
-      <li class="nav-item">
-        <a class="nav-link disabled" href="{{ url_for('index') }}">Profile
-        </a>
-      </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link disabled" href="{{ url_for('index') }}">Profile
+          </a>
+        </li>
+        <li>
+          <a href="{{ url_for('logout') }}">Logout</a>
+        </li>
+      {% endif %}
     </ul>
   </div>
 
