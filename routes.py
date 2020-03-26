@@ -61,14 +61,14 @@ def login():
 def login_auth():
 	user = User.query.filter_by(username=request.form.get('username')).first()
 
-	if user.login(request.form.get('password')):
+	if user.login_auth(request.form.get('password')):
 		app.logger.info('...Login successful.')
 		session['user_id'] = user.id
 	else:
 		app.logger.info('-  Login failure  -')
 		return render_template('login.html')
 
-	return render_template('profile.html', user=user)
+	return render_template('/users/{user.id}', user=user)
 
 
 @app.route('/logout')
@@ -95,7 +95,7 @@ def register_auth():
 		app.logger.info(f'New user {user.id} created. Logging in...')
 		session['user_id'] = user.id
 
-		return redirect(f'/users/{user_id}')
+		return redirect(f'/users/{user.id}')
 
 
 # User routes:
@@ -103,7 +103,7 @@ def register_auth():
 @app.route('/users/<int:user_id>')
 def get_user(user_id):
 	user = User.query.get(user_id)
-	app.logger.ingo(f'Current user = {user}')
+	app.logger.info(f'Current user = {user}')
 
 	return render_template('profile.html', user=user)
 

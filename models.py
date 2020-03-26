@@ -14,6 +14,13 @@ ancestry_table = db.Table('ancestry',
 						  db.Column('tribe_id', db.Integer, db.ForeignKey('tribes.tribe_id')))
 
 
+class ModelMix:
+
+	def save(self):
+		db.session.add(self)
+		db.session.commit()
+
+
 class Tribe(db.Model):
 	"""Indigeneous peoples in North America"""
 
@@ -45,7 +52,7 @@ class Language(db.Model):
 		return f'<Language ID = {self.language_id}, language = {self.language_name}>'
 
 
-class User(db.Model):
+class User(ModelMix, db.Model):
 	"""Users"""
 
 	__tablename__ = 'users'
