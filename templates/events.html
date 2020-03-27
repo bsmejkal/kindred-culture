@@ -18,15 +18,15 @@
 <!-- list of events -->
 
 	<div>
-		<a class="btn btn-primary btn-lg" href="{{ url_for('new_event_form') }}">New Event</a>
+		<a class="btn btn-primary btn-lg" href="{{ url_for('new_event_form') }}">Create New Event</a>
 	</div>
 
 	{% for event in events %}
 
 		<div>
 			<h2>{{ event.title }}</h2>
-			<h3>{{ event.date }} {{ event.time }}</h3>
-			<h3>{{ event.place }}</h3>
+			<h3>{{ event.date }} | {{ event.time }}</h3>
+			<h4>{{ event.place }}</h4>
 			<p>{{ event.details }}</p>
 		</div>
 

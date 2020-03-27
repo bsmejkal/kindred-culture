@@ -26,7 +26,7 @@ def show_details():
 	"""Renders description and details in place on index.html"""
 
 	tribe_name = request.form.get('tribe_name')
-	print(f'\n \n \n {tribe_name}')
+
 	tribe = Tribe.query.filter(Tribe.name==tribe_name).first()
 
 	return jsonify({'name': tribe.name, 
@@ -114,7 +114,7 @@ def get_user(user_id):
 def all_events():
 	"""Page with a list of all events"""
 
-	events = Event.query.all()
+	events = Event.query.order_by(Event.date.asc()).all()
 
 	return render_template('events.html', events=events)
 
@@ -123,7 +123,7 @@ def all_events():
 def new_event_form():
 
 	return render_template('new_event.html')
-	
+
 
 @app.route('/create_event', methods=['POST'])
 def create_event():
