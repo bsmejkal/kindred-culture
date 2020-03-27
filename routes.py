@@ -103,10 +103,18 @@ def register_auth():
 
 @app.route('/users/<int:user_id>')
 def get_user(user_id):
+	"""Shows users their profile page"""
 	user = User.query.get(user_id)
 	app.logger.info(f'Current user = {user}')
 
 	return render_template('profile.html', user=user)
+
+
+@app.route('/events')
+def all_events():
+	"""Page with a list of all events"""
+
+	return render_template('events.html')
 
 
 # @app.route('/profile')
