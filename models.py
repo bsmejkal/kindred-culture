@@ -93,6 +93,23 @@ class Connection(db.Model):
 		return f'<Connection user 1 = {self.user1} user 2 = {self.user2}>'
 
 
+class Event(db.Model):
+	"""Events"""
+
+	__tablename__ = "events"
+
+	event_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	title = db.Column(db.String(75), nullable=False)
+	# date = 
+	# time = 
+	place = db.Column(db.String, nullable=False)
+	details = db.Column(db.String, nullable=False)
+
+	def __repr__(self):
+
+		return f'<Event id = {self.event_id} name = {self.title}>'
+
+
 def connect_to_db(app):
 
 	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///kindred'

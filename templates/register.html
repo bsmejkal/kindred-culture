@@ -7,36 +7,32 @@
 <form action="/api/register" method="post" id="registerForm">
 	<div class="form-group col-md-6">
 		<label>Email:</label>
-		<input type="text" class="form-control" name="email" id="emailData" placeholder="email">
-		<!-- Do I want a <small>Enter your email.</small> here? -->
+		<input type="email" class="form-control" name="email" id="emailData" placeholder="email" required>
 	</div>
 
 	<div class="form-group col-md-6">
 		<label>First Name:</label>
 		<input type="text" class="form-control" name="first_name" id="fNameData" placeholder="first name">
-		<!-- Do I want a <small>Enter your first name.</small> here? -->
 	</div>
 
 	<div class="form-group col-md-6">
 		<label>Last Name:</label>
 		<input type="text" class="form-control" name="last_name" id="lNameData" placeholder="last name">
-		<!-- Do I want a <small>Enter your last name.</small> here? -->
 	</div>
 
 	<div class="form-group col-md-6">
 		<label>Username:</label>
-		<input type="text" class="form-control" name="username" id="usernameData" placeholder="username">
-		<!-- Do I want a <small>Enter your username.</small> here? -->
+		<input type="text" class="form-control" name="username" id="usernameData" placeholder="username" required>
 	</div>
 
 	<div class="form-group col-md-6">
 		<label>Password:</label>
-		<input type="text" class="form-control" name="password" id="passwordData" placeholder="new password">
+		<input type="password" class="form-control" name="password" id="passwordData" placeholder="new password" required>
 	</div>
 
 	<div class="form-group col-md-6">
 		<label>Confirm Password:</label>
-		<input type="text" class="form-control" name="passwordConfirm" placeholder="confirm password">
+		<input type="password" class="form-control" name="passwordConfirm" placeholder="confirm password" required>
 	</div>
 
 	<div class="form-group col-md-6">
