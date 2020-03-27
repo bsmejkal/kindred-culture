@@ -5,12 +5,28 @@
 {% block content %}
 
 <!-- event search bar -->
-	<form>
-		<div>
-			<input type="" name="">
+
+	<!-- <form action="/event-search" method="post" id="eventSearch">
+		<div class="form-group">
+			<label>Search</label>
+			<input type="text" class="form-control" name="event_search" id="eventSearch" placeholder="search events">
 		</div>
-	</form>
+
+		<button type="submit" class="btn btn-outline-secondary">Submit</button>
+	</form> -->
+
 <!-- list of events -->
+
+	{% for event in events %}
+
+		<div>
+			<h2>{{ event.title }}</h2>
+			<h3>{{ event.date }} {{ event.time }}</h3>
+			<h3>{{ event.place }}</h3>
+			<p>{{ event.details }}</p>
+		</div>
+
+	{% endfor %}
 
 
 {% endblock %}

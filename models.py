@@ -100,10 +100,13 @@ class Event(db.Model):
 
 	event_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
 	title = db.Column(db.String(75), nullable=False)
-	# date = 
-	# time = 
+	date = db.Column(db.Date, nullable=False)
+	time = db.Column(db.Time, nullable=False)
 	place = db.Column(db.String, nullable=False)
 	details = db.Column(db.String, nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+	organizer = db.relationship('User', backref='events')
 
 	def __repr__(self):
 

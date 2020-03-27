@@ -114,7 +114,9 @@ def get_user(user_id):
 def all_events():
 	"""Page with a list of all events"""
 
-	return render_template('events.html')
+	events = Event.query.all()
+
+	return render_template('events.html', events=events)
 
 
 # @app.route('/profile')
