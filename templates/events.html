@@ -17,6 +17,10 @@
 
 <!-- list of events -->
 
+	<div>
+		<a class="btn btn-primary btn-lg" href="{{ url_for('new_event_form') }}">New Event</a>
+	</div>
+
 	{% for event in events %}
 
 		<div>

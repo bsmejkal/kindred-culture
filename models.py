@@ -93,7 +93,7 @@ class Connection(db.Model):
 		return f'<Connection user 1 = {self.user1} user 2 = {self.user2}>'
 
 
-class Event(db.Model):
+class Event(ModelMix, db.Model):
 	"""Events"""
 
 	__tablename__ = "events"

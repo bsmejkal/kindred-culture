@@ -1,7 +1,7 @@
 """Routes to render html page views, user page views, & user auths."""
 
 from flask import Flask, render_template, request, jsonify, session, redirect, flash
-from models import Tribe, User
+from models import Tribe, User, Event
 
 
 app = Flask(__name__)
@@ -117,6 +117,33 @@ def all_events():
 	events = Event.query.all()
 
 	return render_template('events.html', events=events)
+
+
+@app.route('/new_event')
+def new_event_form():
+
+	return render_template('new_event.html')
+	
+
+@app.route('/create_event', methods=['POST'])
+def create_event():
+
+	app.logger.info('Creating new event...')
+
+	event_data = dict(request.form)
+
+	event = Event(**event_data)
+	event.save()
+	app.logger.info(f'New event {event.event_id} created. \nAdding to events page...')
+
+	# TO DO: create redirect to event details page
+	return redirect('/events')
+
+
+# TO DO:
+#	Create a delete event func
+#	¿ Auto delete event after a preset exp ?
+#	Create an edit event func
 
 
 # @app.route('/profile')
