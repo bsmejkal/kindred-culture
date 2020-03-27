@@ -1,6 +1,6 @@
 """Routes to render html page views, user page views, & user auths."""
 
-from flask import Flask, render_template, request, jsonify, session, redirect
+from flask import Flask, render_template, request, jsonify, session, redirect, flash
 from models import Tribe, User
 
 
@@ -49,7 +49,7 @@ def register_user():
 
 
 @app.route('/login')
-def login():
+def login_form():
 	"""User login page"""
 
 	return render_template('login.html')
@@ -58,17 +58,18 @@ def login():
 # Auth routes:
 
 @app.route('/api/auth', methods=['POST'])
-def login_auth():
+def login():
 	user = User.query.filter_by(username=request.form.get('username')).first()
 
-	if user.login_auth(request.form.get('password')):
+	if user.login(request.form.get('password')):
 		app.logger.info('...Login successful.')
 		session['user_id'] = user.id
 	else:
 		app.logger.info('-  Login failure  -')
+		flash('Invalid username or password.')
 		return render_template('login.html')
 
-	return render_template('/users/{user.id}', user=user)
+	return render_template('profile.html', user=user)
 
 
 @app.route('/logout')

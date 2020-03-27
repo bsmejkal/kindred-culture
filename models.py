@@ -75,8 +75,8 @@ class User(ModelMix, db.Model):
 	def create_password(self, password):
 		self.password = generate_password_hash(password)
 
-	def is_valid_password(self, password):
-		check_password_hash(self.password, password)
+	def login(self, password):
+		return check_password_hash(self.password, password)
 
 
 class Connection(db.Model):
