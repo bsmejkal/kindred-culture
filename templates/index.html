@@ -8,7 +8,7 @@
 
 {% block content %}
 
-	<div class="jumbotron">
+<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3"></h1>
 
@@ -18,6 +18,8 @@
 			</blockquote>
 		</div>
 	</div>
+
+<!-- MapBox GL JS below -->
 
 	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
 	<link
@@ -29,7 +31,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
-	<div id='map' style='width: 1100px; height: 500px;'></div>
+	<div id='map' style='width: 100%; height: 500px;'></div>
 	<script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYnNtZWprYWwiLCJhIjoiY2s3ZG0zdWZ6MGVpbjNlcG94OTUyZXdzZSJ9.beCqwACJOxjO_Ax6OZt1AA';
 	var map = new mapboxgl.Map({
@@ -48,23 +50,48 @@
 
 	</script>
 
-	<form id="select-details" method="post" action="/details">
-		<div class="form-group">
-			<label>Details</label>
-			<select id="tribe-name-field" name="tribe_name">
-				<!-- for loop to display all tribe names -->
-				{% for tribe in tribes %}
-					<option value="{{ tribe.name }}">{{ tribe.name }}
-					</option>
-				{% endfor %}
-			</select>
-			<input type="submit">
+<!-- MapBox end -->
+
+	<div class="container-fluid">
+		<div class="col">
+			<form id="select-details" method="post" action="/details">
+				
+				<div class="form-group row">
+					<label>Learn More</label>
+					<select class="form-control" id="tribe-name-field" name="tribe_name">
+						<!-- for loop to display all tribe names -->
+						{% for tribe in tribes %}
+							<option value="{{ tribe.name }}">{{ tribe.name }}
+							</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="form-group row">
+					<button type="submit" class="btn btn-outline-secondary">Submit</button>
+				</div>
+
+			</form>
 		</div>
-	</form>
+	</div>
 
 	<!-- 	display details here -->
-	<div id="show-details">
+
+<div class="container-fluid">
+	<div class="d-flex justify-content-center">
+		<h2 id="show-name"></h2>
 	</div>
+
+	<div class="d-flex justify-content-center">
+		<h4 id="show-region"></h4>
+	</div>
+
+	<div class="d-flex justify-content-center" id="details">
+		<p id="show-description"></p>
+	</div>
+</div>
+
+<img src="https://images.pexels.com/photos/155008/pexels-photo-155008.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="img-fluid" alt="Responsive image">
 
 	<script type="text/javascript" src="static/main.js"></script>
 {% endblock %}

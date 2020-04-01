@@ -4,14 +4,17 @@
 
 {% block content %}
 
-	<div>
+	<div class="container">
 		<!-- display username & first / last name -->
-		<h2>Hello, {{ user.first_name }} {{ user.last_name }}!</h2>
+		<h2 class="text-center" style="margin: 10%;">Hello, {{ user.first_name }}<!-- {{ user.last_name }}-->!</h2>
+
 		<!-- display ancestry / heritage -->
 		<!-- display location -->
 		<!-- display about -->
-		<h3>About You:</h3>
-		<p>{{ user.about }}</p>
+
+		<h5 class="text-justify">Username: {{ user.username }}</h5>
+		<br>
+		<h5 class="text-justify">About: {{ user.about }}</h5>
 	</div>
 
 {% endblock %}

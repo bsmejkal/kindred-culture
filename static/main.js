@@ -6,7 +6,15 @@ function showTribeDetails(evt) {
 	const inputName = $('#select-details').serialize();
 
 	$.post('/details', inputName, (res) => {
-		$('#show-details').html(`${res.name} ${res.region} ${res.description}`)
+		$('#show-name').html(`${res.name}`)
+	});
+
+	$.post('/details', inputName, (res) => {
+		$('#show-region').html(`${res.region}`)
+	});
+
+	$.post('/details', inputName, (res) => {
+		$('#show-description').html(`${res.description}`)
 	});
 
 }

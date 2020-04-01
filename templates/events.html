@@ -17,13 +17,17 @@
 
 <!-- list of events -->
 
-	<div>
-		<a class="btn btn-primary btn-lg" href="{{ url_for('new_event_form') }}">Create New Event</a>
+	<div class="row" style="margin: 5% 5% 5% 70%;">
+		<div class="col-sm">
+			<a class="btn btn-secondary btn-lg" href="{{ url_for('new_event_form') }}">Create New Event</a>
+		</div>
 	</div>
+
+	<h1 style="margin: 0 0 5% 10%;">Upcoming Events</h1>
 
 	{% for event in events %}
 
-		<div>
+		<div style="margin: 0 10% 5% 10%;">
 			<h2>{{ event.title }}</h2>
 			<h3>{{ event.date }} | {{ event.time }}</h3>
 			<h4>{{ event.place }}</h4>
@@ -31,6 +35,7 @@
 		</div>
 
 	{% endfor %}
+
 
 
 {% endblock %}
